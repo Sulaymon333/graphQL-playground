@@ -3,8 +3,7 @@ import { GraphQLServer } from 'graphql-yoga';
 // Type definitions (schema) (String! = required field)
 const typeDefs = `
 type Query {
-    me: User!
-    post : Post!
+    me : User!
 }
 
 type User {
@@ -12,14 +11,6 @@ type User {
     name: String!
     email: String!
     age: Int
-}
-
-type Post {
-    id: ID!
-    title: String!
-    body: String!
-    publishedDate: String!
-    published: Boolean!
 }
 `;
 
@@ -30,18 +21,7 @@ const resolvers = {
             return {
                 id: '234hyu',
                 name: 'Sulaymon',
-                email: 'sulaymon@example.com',
-                age: 27
-            };
-        },
-
-        post() {
-            return {
-                id: '124wx',
-                title: 'The great graphQL',
-                body: 'GraphQL is an awesome technology to help simply API',
-                publishedDate: '22.09.2019',
-                published: true
+                email: 'sulaymon@example.com'
             };
         }
     }
