@@ -3,6 +3,7 @@ import { GraphQLServer } from 'graphql-yoga';
 // Type definitions (schema) (String! = required field)
 const typeDefs = `
 type Query {
+    greeting(name: String, position: String): String!
     me: User!
     post : Post!
 }
@@ -26,6 +27,14 @@ type Post {
 // Resolvers - functions to be executed when a query is run
 const resolvers = {
     Query: {
+        greeting(parent, args, ctx, info) {
+            if (args.name && args.position) {
+                console.log(args);
+                return `Hello ${args.name}! You are my best ${args.position}`;
+            } else {
+                return 'Hello ';
+            }
+        },
         me() {
             return {
                 id: '234hyu',
