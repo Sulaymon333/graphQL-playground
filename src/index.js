@@ -3,27 +3,31 @@ import { GraphQLServer } from 'graphql-yoga';
 // Type definitions (schema) (String! = required field)
 const typeDefs = `
 type Query {
-    hello: String!
+    id: ID!
     name: String!
-    location: String!
-    bio: String!
+    age: Int!
+    employed: Boolean!
+    gpa: Float
 }
 `;
 
 // Resolvers - functions to be executed when a query is run
 const resolvers = {
     Query: {
-        hello() {
-            return 'This is a required Hello String';
+        id() {
+            return '123xyz';
         },
         name() {
             return 'Sulaymon';
         },
-        location() {
-            return 'Finland';
+        age() {
+            return '33';
         },
-        bio() {
-            return 'I am a super cool guy';
+        employed() {
+            return true;
+        },
+        gpa() {
+            return null;
         }
     }
 };
