@@ -4,8 +4,10 @@ import { GraphQLServer } from 'graphql-yoga';
 const typeDefs = `
 type Query {
     greeting(name: String, position: String): String!
+    add(a: Float!, b: Float!): Float!
     me: User!
     post : Post!
+    
 }
 
 type User {
@@ -22,6 +24,7 @@ type Post {
     publishedDate: String!
     published: Boolean!
 }
+
 `;
 
 // Resolvers - functions to be executed when a query is run
@@ -52,6 +55,12 @@ const resolvers = {
                 publishedDate: '22.09.2019',
                 published: true
             };
+        },
+
+        add(parent, args, ctx, info) {
+            if (args.a && args.b) {
+                return args.a + args.b;
+            }
         }
     }
 };
